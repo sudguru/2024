@@ -1,0 +1,37 @@
+This code is a Python script that uses Google OR-Tools to solve a shift scheduling problem. The goal is to assign shifts to employees over a period of weeks, taking into account various constraints and objectives to optimize the schedule. Here's a summary of the key components:
+Data
+
+    Employees: The number of employees is fixed at 8.
+    Weeks: The schedule spans 3 weeks.
+    Shifts: There are 4 types of shifts: Off, Morning, Afternoon, and Night.
+    Fixed Assignments: Some shifts are pre-assigned to employees for specific days.
+    Requests: Employees have preferences or requirements for certain shifts on specific days, which can be positive (preference) or negative (requirement).
+    Shift Constraints: There are constraints on the minimum and maximum number of consecutive days for certain shifts, with penalties for not meeting these constraints.
+    Weekly Sum Constraints: There are constraints on the total number of shifts per week for each shift type, with penalties for not meeting these constraints.
+    Penalized Transitions: There are penalties for transitioning between certain shifts.
+    Weekly Cover Demands: There are demands for each shift type per day of the week.
+
+Constraints
+
+    Exactly One Shift Per Day: Each employee must be assigned exactly one shift per day.
+    Fixed Assignments: Some shifts are fixed for specific employees and days.
+    Shift Constraints: There are constraints on the minimum and maximum number of consecutive days for certain shifts, with penalties for not meeting these constraints.
+    Weekly Sum Constraints: There are constraints on the total number of shifts per week for each shift type, with penalties for not meeting these constraints.
+    Penalized Transitions: There are penalties for transitioning between certain shifts.
+    Cover Constraints: There are constraints on the total number of employees needed for each shift type per day, with penalties for not meeting these constraints.
+
+Objectives
+
+    Minimize Penalties: The objective is to minimize the total penalties associated with not meeting the constraints. This includes penalties for not meeting shift constraints, weekly sum constraints, penalized transitions, and cover constraints.
+
+Solving the Problem
+
+The script defines a model using the cp_model.CpModel class from OR-Tools. It then adds constraints and objectives to the model based on the data and requirements. The model is solved using the cp_model.CpSolver class, with the solution being printed out. The script also supports writing the model to a proto file for further analysis or modification.
+Key Functions
+
+    negated_bounded_span: Helper function to create a sequence of negated Boolean variables with optional bounds.
+    add_soft_sequence_constraint: Adds a constraint that penalizes sequences of true variables that are too short or too long.
+    add_soft_sum_constraint: Adds a constraint that penalizes sums of true variables that are too low or too high.
+    solve_shift_scheduling: The main function that sets up the model, adds constraints and objectives, solves the model, and prints the solution.
+
+This script demonstrates how to use Google OR-Tools for complex scheduling problems, showcasing the use of Boolean variables, constraints, and objectives to optimize schedules under various constraints.

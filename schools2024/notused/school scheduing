@@ -1,0 +1,62 @@
+
+Using Minizinc, I am trying to create a model to create a monthly teacher schedule in a school.
+
+Here is the format of the output:
+
+Class		Day 	1stPeriod 		2ndPeriod 	etc ...
+Class One A	Sun	Teacher1/English	Teacher2/Math
+...
+Class One B	Sun 	Teacher2/Math		Teacher1/English
+...
+Class Two	Sun	Teacher3/Science	Teacher4/Math
+
+I have following facts and constraints.
+
+There are 10 Grades. Each Grades has one or more sections. Lets say we have the following classes and sections.
+
+Clas One A, Class One B, Class Two, Class Three, Class Four, Class Five, Class Six, Class Seven, Class Eight A, Class Eight B, Class Nine, Class Ten.
+
+There is a fixed classroom allocated for each class. In above example we have 12 classrooms. Each class is taught in the same room. (so room is not the issue)
+
+Each class has a certain number of subjects. subjects are same for all sections of a given class. Class One A has same subjects as of Class One B. 
+
+Also, subjects have credit hours. Amount of periods in a month should be allocated according to the credit hours of a given subject. But at least one period should be allocated to a subject no matter how small its credit hours compared to others.
+
+Each day there are 7 periods. In each period one teacher teaches one subject. A teacher can not be assigned two classes at the same period. A teacher must have at least one free period for resting. Generally a teacher teaches same subject in the class he is assigned to, but sometime he may teaches another similar subject as well. A range of classes a teacher teaches must not exceed 6, which means a teacher who teaches in class One may teach in class 6 but can not teach in class 7.
+
+Here is the example of class subjects and credit hours.
+
+Class	Subject			Credit_Hours
+One	English I		100
+One	Nepali			100
+One	Math			100
+One	Science			100
+One	Social Studies		100
+One	Health			 50
+One	General Knowledge	 50
+One	English II		 50
+One	Nepali II		 50
+One	English Writing		 10
+One	Nepali Writing		 10
+One	Art			 50
+One	Spoken			 20
+Two	English			100
+Two	Nepali			100
+Two	Math			100
+Two 	Science			100
+Two	Social Studies		100
+Two	Moral Studies		100
+Two	General Knowledge	50	
+Two	Art			50
+Two	English Writing		10
+Two	Nepali Writing		10
+Two	Spoken			20
+
+The solution should optimize the number of teachers. In Grades Above 7, a teacher who teaches a subject with 100 credit hours can not teach another subject with 100 credit hours.
+
+Can you do it? Using MiniZinc.
+
+
+
+
+

@@ -1,0 +1,54 @@
+
+Using Minizinc, I am trying to create a model to create a monthly teacher schedule in a school.
+
+I have following facts and constraints.
+
+There are two classes: One and Two. 
+
+There is a fixed classroom allocated for each class. In above example we have 2 classrooms. Each class is taught in the same room. (so room is not the issue)
+
+Each class has a certain number of subjects.
+Class One has English, Math, Science, Art
+Class Two has English, Math, Science, Art, GK
+
+
+Maximum number of periods that can be allocated for a subject for a class in a week is given.
+Class One English = 100, Nepali = 100, Science = 100, Art = 2
+Class Two English = 100, Nepali = 100, Science = 100, Art = 2, GK = 1
+Of course it doesn't mean there should be 100 English periods in week, its just maximum that can be allocated.
+
+Each day there are 3 periods. In each period one teacher teaches one subject. A teacher can not be assigned two classes at the same period. A teacher must have at least one free period for resting. 
+There are known number of teachers and what they teach in which class is also known. 
+
+There is a special Teacher UNKONWN who can teach all subjects in all classes. But he should be assigned classes only if there is no other teacher available.
+
+Example:
+Teacher1: English in Class One and Two
+Teacher2: Math in Class One and Two
+Teacher3: Science in Class One and Two, GK in Class Two
+Teacher4: Art in Class One and Two
+
+The task is to create schedule.
+
+Format of the output should be like this:
+
+Class	Day 	1stPeriod 		2ndPeriod		3rdPeriod 	
+One	Sun	Teacher1/English	Teacher2/Math		Teacher3/Science
+One	Mon	Teacher1/English	Teacher2/Math		Teacher3/Science
+One	Tue	Teacher1/English	Teacher2/Math		Teacher3/Science
+One	Wed	Teacher1/English	Teacher2/Math   	Teacher3/Science
+One	Thu	Teacher1/English	Teacher2/Math   	Teacher3/Science
+One	Fri	Teacher4/Art		Teacher2/Math    	Teacher3/Science
+Two	Sun	Teacher2/Math		Teacher3/Science	Teacher1/English
+Two	Mon	Teacher2/Math		Teacher3/Science	Teacher1/English
+Two	Tue	Teacher2/Math		Teacher3/Science	Teacher1/English
+Two	Wed	Teacher2/Math		Teacher3/Science   	Teacher1/English
+Two	Thu	Teacher3/GK        	Teacher4/Art	   	Teacher4/Art
+Tw9	Fri	Teacher2/Math		Teacher3/Science    	Teacher1/English
+
+Can you do it? Using MiniZinc.
+
+
+
+
+

@@ -1,0 +1,5 @@
+"Notes:"
+"Please do not change the template headings"
+"Status should be one of these values: Present, Absent, On Leave, Half Day, Work From Home"
+"If you are overwriting existing attendance records, 'ID' column mandatory"
+"ID","Employee","Employee Name","Date","Status","Leave Type","Company","Naming Series"
